@@ -1,4 +1,4 @@
-package hello.core.member;
+package hello.core.java.member;
 
 public class MemberServiceImpl implements MemberService {
 

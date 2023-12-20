@@ -1,12 +1,11 @@
-package hello.core;
+package hello.core.java;
 
-import hello.core.member.Grade;
-import hello.core.member.Member;
-import hello.core.member.MemberService;
-import hello.core.member.MemberServiceImpl;
-import hello.core.order.Order;
-import hello.core.order.OrderService;
-import hello.core.order.OrderServiceImpl;
+import hello.core.java.AppConfig;
+import hello.core.java.member.Grade;
+import hello.core.java.member.Member;
+import hello.core.java.member.MemberService;
+import hello.core.java.order.Order;
+import hello.core.java.order.OrderService;
 
 public class OrderApp {
 

@@ -1,6 +1,6 @@
-package hello.core.member;
+package hello.core.java.member;
 
-import hello.core.AppConfig;
+import hello.core.java.AppConfig;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

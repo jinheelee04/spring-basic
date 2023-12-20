@@ -1,14 +1,13 @@
-package hello.core;
+package hello.core.java;
 
-import hello.core.discount.DiscountPolicy;
-import hello.core.discount.FixDiscountPolicy;
-import hello.core.discount.RateDiscountPolicy;
-import hello.core.member.MemberRepository;
-import hello.core.member.MemberService;
-import hello.core.member.MemberServiceImpl;
-import hello.core.member.MemoryMemberRepository;
-import hello.core.order.OrderService;
-import hello.core.order.OrderServiceImpl;
+import hello.core.java.discount.DiscountPolicy;
+import hello.core.java.discount.RateDiscountPolicy;
+import hello.core.java.member.MemberRepository;
+import hello.core.java.member.MemberService;
+import hello.core.java.member.MemberServiceImpl;
+import hello.core.java.member.MemoryMemberRepository;
+import hello.core.java.order.OrderService;
+import hello.core.java.order.OrderServiceImpl;
 
 public class AppConfig {
 
@@ -17,7 +16,7 @@ public class AppConfig {
         return new MemberServiceImpl(memberRepository()); // 생성자 주입
     }
 
-    private MemberRepository memberRepository(){
+    public MemberRepository memberRepository(){
         return new MemoryMemberRepository();
     }
 

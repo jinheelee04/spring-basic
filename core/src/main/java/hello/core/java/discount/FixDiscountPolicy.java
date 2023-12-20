@@ -1,7 +1,7 @@
-package hello.core.discount;
+package hello.core.java.discount;
 
-import hello.core.member.Grade;
-import hello.core.member.Member;
+import hello.core.java.member.Grade;
+import hello.core.java.member.Member;
 
 public class FixDiscountPolicy implements DiscountPolicy{
 

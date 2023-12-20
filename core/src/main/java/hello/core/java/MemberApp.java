@@ -1,9 +1,8 @@
-package hello.core;
+package hello.core.java;
 
-import hello.core.member.Grade;
-import hello.core.member.Member;
-import hello.core.member.MemberService;
-import hello.core.member.MemberServiceImpl;
+import hello.core.java.member.Grade;
+import hello.core.java.member.Member;
+import hello.core.java.member.MemberService;
 
 public class MemberApp {
 
