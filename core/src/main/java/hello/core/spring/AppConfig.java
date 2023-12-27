@@ -17,8 +17,9 @@ import org.springframework.context.annotation.Configuration;
  * 기존 개발자가 AppConfig를 사용해서 직접 객체를 구성하고 DI를 했지만,
  * 스프링 컨테이너를 통해 사용한다.
  * 스프링 컨테이너는 @Configuration이 붙은 AppConfig를 설정(구성)정보로 사용한다.
- * @Bean이라 적힌 메서드를 모두 호출해서 반환된 객체를 스프링 컨테이너에 등록한다.
+ * Bean이라 적힌 메서드를 모두 호출해서 반환된 객체를 스프링 컨테이너에 등록한다.
  * 이렇게 스프링 컨테이터에 등록된 객체를 스프링빈이라 한다.
+ * (팩토리 매서드 방식)
  */
 @Configuration
 public class AppConfig {
