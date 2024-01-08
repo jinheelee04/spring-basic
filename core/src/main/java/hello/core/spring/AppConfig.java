@@ -8,6 +8,7 @@ import hello.core.spring.member.MemberServiceImpl;
 import hello.core.spring.member.MemoryMemberRepository;
 import hello.core.spring.order.OrderService;
 import hello.core.spring.order.OrderServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,11 +22,13 @@ import org.springframework.context.annotation.Configuration;
  * 이렇게 스프링 컨테이터에 등록된 객체를 스프링빈이라 한다.
  * (팩토리 매서드 방식)
  */
-@Configuration
+@Configuration  // Configuration 어노테이션이 없다면 싱글톤 보장이 되지 않는다.(CGLIB이 생성되지 않음)
 public class AppConfig {
 
     //@Bean memberService -> new MemoryMemberRepository()
     //@Bean orderService -> new MemoryMemberRepository()
+//    @Autowired
+//    MemberRepository memberRepository; // 의존성 자동 주입
 
     @Bean // 스프링 컨테이너에 자동 등록됨
     public MemberService memberService(){
