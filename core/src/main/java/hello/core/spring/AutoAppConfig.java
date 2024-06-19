@@ -27,12 +27,24 @@ import org.springframework.context.annotation.FilterType;
  * @Service: 특별한 처리 하지 않는다. 대신 개발자들이 핵심 비즈니스 계층을 인식하는데 도움을 준다.
  * @Repository: 스프링 데이터 접근 계층으로 인식하고, 데이터 계층의 예외를 스프링 예외로 반환해준다.
  * @Configuration: 스프링 설정 정보로 인식하고, 스프링 빈이 싱글톤을 유지하도록 추가 처리 한다.
+ *
+ * FilterType 옵션
+ * 1. ANNOTATION: 기본값, 애노테이션을 인식해서 동작
+ *    ex) org.example.SomeAnnotation
+ * 2. ASSIGNABLE_TYPE: 지정한 타입과 자식 타입을 인식해서 동작한다.(클래스 직접 지정)
+ *    ex) org.example.SomeClass   @Filter(type = FilterType.ASSIGNABLE_TYPE, classes = BeanA.class)
+ * 3. ASPECTJ: AspectJ패턴 사용
+ *    ex) org.example..*Service+
+ * 4. REGEX:정규 표현식
+ *    ex) org\.example\.Default.*
+ * 5. CUSTOM: TypeFilter 라는 인터페이스를 구현해서 처리
+ *   ex) org.example.MyTypeFilter
  */
 @Configuration
 @ComponentScan(
         basePackages = {"hello.core.spring.member"}, // 컴포넌트 대상 패키지, 기본 설정: @ComponentScan이 붙은 설정 정보 클래스의 패키지가 시작위치(ex: hello.core.spring)
 //        basePackageClasses = AutoAppConfig.class, // 지정한 클래스의 패키지를 탐색 시작 위치로 지정한다.
-        excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Configuration.class})  // 스캔 대상 제외
+        excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Configuration.class})  // 스캔 대상 제외, type= FilterType.ANNOTATION 기본값 생략 가능
 )
 public class AutoAppConfig {
 
