@@ -1,5 +1,6 @@
 package hello.core.spring.discount;
 
+import hello.core.spring.annotation.MainDiscountPolicy;
 import hello.core.spring.member.Grade;
 import hello.core.spring.member.Member;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -8,7 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 //@Qualifier("mainDiscountPolicy")
-@Primary // 우선권을 가진다.
+//@Primary // Primary 어노테이션을 가진 클래스가 우선권을 가진다.
+@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountPercent = 10;

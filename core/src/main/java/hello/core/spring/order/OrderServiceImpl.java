@@ -3,6 +3,7 @@ package hello.core.spring.order;
 //import hello.core.java.discount.FixDiscountPolicy;
 //import hello.core.java.discount.RateDiscountPolicy;
 
+import hello.core.spring.annotation.MainDiscountPolicy;
 import hello.core.spring.discount.DiscountPolicy;
 import hello.core.spring.member.Member;
 import hello.core.spring.member.MemberRepository;
@@ -51,7 +52,7 @@ public class OrderServiceImpl implements OrderService {
 //    @Autowired
 //    private DiscountPolicy rateDiscountPolicy;
     @Autowired  //생략 가능
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy){
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
