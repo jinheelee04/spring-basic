@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  * Lombok 라이브러리의 @RequiredArgsConstructor 함께 사용
  */
 @Component
-@RequiredArgsConstructor // final이 붙은 필드를 파라미터로 받는 생성자를 자동으로 만들어준다. ( ctrl + f12 생성자 확인 할 수 있다.)
+//@RequiredArgsConstructor // final이 붙은 필드를 파라미터로 받는 생성자를 자동으로 만들어준다. ( ctrl + f12 생성자 확인 할 수 있다.)
 public class OrderServiceImpl implements OrderService {
 
     /**
@@ -30,11 +30,11 @@ public class OrderServiceImpl implements OrderService {
      */
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
-//    @Autowired  //생략 가능
-//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
-//        this.memberRepository = memberRepository;
-//        this.discountPolicy = discountPolicy;
-//    }
+    @Autowired  //생략 가능
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     /**
      * 필드 주입
