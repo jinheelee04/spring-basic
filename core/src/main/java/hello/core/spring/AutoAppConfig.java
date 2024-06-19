@@ -1,7 +1,11 @@
 package hello.core.spring;
 
+import hello.core.spring.order.OrderService;
+import hello.core.spring.order.OrderServiceImpl;
+import hello.core.spring.discount.DiscountPolicy;
 import hello.core.spring.member.MemberRepository;
 import hello.core.spring.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -45,12 +49,29 @@ import org.springframework.context.annotation.FilterType;
  */
 @Configuration
 @ComponentScan(
-        basePackages = {"hello.core.spring.member"}, // 컴포넌트 대상 패키지, 기본 설정: @ComponentScan이 붙은 설정 정보 클래스의 패키지가 시작위치(ex: hello.core.spring)
+//        basePackages = {"hello.core.spring.member"}, // 컴포넌트 대상 패키지, 기본 설정: @ComponentScan이 붙은 설정 정보 클래스의 패키지가 시작위치(ex: hello.core.spring)
 //        basePackageClasses = AutoAppConfig.class, // 지정한 클래스의 패키지를 탐색 시작 위치로 지정한다.
         excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Configuration.class})  // 스캔 대상 제외, type= FilterType.ANNOTATION 기본값 생략 가능
 )
 public class AutoAppConfig {
-    
+
+    /**
+     * 이 방법도 권장하지 않음
+     */
+//    @Autowired MemberRepository memberRepository;
+//    @Autowired DiscountPolicy discountPolicy;
+//
+//    @Bean
+//    OrderService orderService() {
+//        return new OrderServiceImpl(memberRepository, discountPolicy);
+//    }
+
+//    @Bean
+//    OrderService orderService(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        return new OrderServiceImpl(memberRepository, discountPolicy);
+//    }
+
+
     /*
      * 빈 수동 등록
      * 우선권을 갖는다.
