@@ -1,5 +1,8 @@
 package hello.core.spring;
 
+import hello.core.spring.member.MemberRepository;
+import hello.core.spring.member.MemoryMemberRepository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -47,5 +50,18 @@ import org.springframework.context.annotation.FilterType;
         excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Configuration.class})  // 스캔 대상 제외, type= FilterType.ANNOTATION 기본값 생략 가능
 )
 public class AutoAppConfig {
+    
+    /*
+     * 빈 수동 등록
+     * 우선권을 갖는다.
+     * 수동 빈이 자동 빈을 오버라이딩 해버린다.
+     * 그러나, 여러 설정들이 꼬여서 찾기 어려운 버그가 생길 수 있다.
+     * 스프링부트에서는 에러를 발생시킨다.(오버라이딩 막는다.)
+     * 기본값: spring.main.allow-bean-definition-overriding=true
+     */
+//    @Bean(name="memoryMemberRepository")
+//    MemberRepository memberRepository() {
+//        return new MemoryMemberRepository();
+//    }
 
 }
