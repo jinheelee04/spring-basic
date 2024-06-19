@@ -6,10 +6,17 @@ package hello.core.spring.order;
 import hello.core.spring.discount.DiscountPolicy;
 import hello.core.spring.member.Member;
 import hello.core.spring.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * 정리
+ * 최근에는 생성자 1개를 두고, @Autowired 생략
+ * Lombok 라이브러리의 @RequiredArgsConstructor 함께 사용
+ */
 @Component
+@RequiredArgsConstructor // final이 붙은 필드를 파라미터로 받는 생성자를 자동으로 만들어준다. ( ctrl + f12 생성자 확인 할 수 있다.)
 public class OrderServiceImpl implements OrderService {
 
     /**
@@ -23,11 +30,11 @@ public class OrderServiceImpl implements OrderService {
      */
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    @Autowired  //생략 가능
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     /**
      * 필드 주입
