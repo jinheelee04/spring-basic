@@ -8,12 +8,29 @@ import hello.core.spring.member.Member;
 import hello.core.spring.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
  * 정리
  * 최근에는 생성자 1개를 두고, @Autowired 생략
  * Lombok 라이브러리의 @RequiredArgsConstructor 함께 사용
+ * 
+ * @Autowired 매칭 정리
+ * 1. 타입 매칭
+ * 2. 타입 매칭의 결과가 2개 이상일 때 필드명,파라미터 명으로 빈 이름 매칭
+ *
+ * @Qualifier 정리
+ * 1. @Qualifier 매칭
+ * 2. 빈 이름 매칭
+ * 3. NoSuchBeanDefinitionException 발생
+ *
+ * @Primary
+ * 우선권을 가진다.
+ *
+ * @Qualifier 와  @Primary 의 우선 순위
+ * 자세한 것이 우선권을 가져감, 넓은 범위 보다는 좁은 법위
+ * 따라서, Qualifier 우선권을 가져간다.
  */
 @Component
 //@RequiredArgsConstructor // final이 붙은 필드를 파라미터로 받는 생성자를 자동으로 만들어준다. ( ctrl + f12 생성자 확인 할 수 있다.)
@@ -30,11 +47,19 @@ public class OrderServiceImpl implements OrderService {
      */
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
+
+//    @Autowired
+//    private DiscountPolicy rateDiscountPolicy;
     @Autowired  //생략 가능
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
+//    @Autowired  //생략 가능
+//    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy){
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     /**
      * 필드 주입

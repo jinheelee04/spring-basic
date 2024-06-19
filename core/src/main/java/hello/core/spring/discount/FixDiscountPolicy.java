@@ -2,6 +2,7 @@ package hello.core.spring.discount;
 
 import hello.core.spring.member.Grade;
 import hello.core.spring.member.Member;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
  * No qualifying bean of type 'hello.core.spring.discount.DiscountPolicy' available: expected single matching bean but found 2: fixDiscountPolicy,rateDiscountPolicy
  */
 @Component
+//@Qualifier("fixDiscountPolicy")
 public class FixDiscountPolicy implements DiscountPolicy {
 
     private int discountFixAmount = 1000; // 1000원 할인
