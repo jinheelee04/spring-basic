@@ -32,7 +32,8 @@ public class BeanLifecycleTest {
          *  - 추론 기능을 사용하지 않을 경우 destroyMethod = "" 을 사용하면 된다.
          * @return
          */
-        @Bean(initMethod = "init", destroyMethod = "close")
+//        @Bean(initMethod = "init", destroyMethod = "close")
+        @Bean
         public NetworkClient networkClient(){
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("http://hello-spring.dev");

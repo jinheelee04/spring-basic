@@ -1,5 +1,7 @@
 package hello.core.lifecycle;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
@@ -19,6 +21,12 @@ import org.springframework.beans.factory.InitializingBean;
  *  - 스프링 전용 인터페이스다. 해당 코드가 스프링 전용 인터페이스에 의존한다.
  *  - 초기화, 소멸 메소드의 이름을 변경할 수 없다.
  *  - 내가 코드를 고칠 수 없는 외부 라이브러리에 적용할 수 없다.
+ *
+ * @PostConstruct, @PreDestory 애노테이션 특징
+ * - 가장 권장하는 방법
+ * - 스프링에 종속적인 기술이 아니라 JSR-250라는 자바 표준이다. 따라서 스프링이 아닌 다른 컨테이너에서도 동작한다.
+ * - 컴포넌트 스캔과 잘 어울린다.
+ * - 단점: 외부 라이브러리에는 적용하지 못한다. 외부 라이브러리를 초기화, 종료해야 하면 @Bean의 기능을 사용하자.
  */
 //public class NetworkClient implements InitializingBean, DisposableBean {
 public class NetworkClient{
@@ -57,6 +65,8 @@ public class NetworkClient{
         connect();
         call("초기화 연결 메시지");
     }*/
+
+    @PostConstruct
     public void init(){
         System.out.println("NetworkClient.init");
         connect();
@@ -72,7 +82,7 @@ public class NetworkClient{
         System.out.println("NetworkClient.destroy");
         disconnect();
     }*/
-
+    @PreDestroy
     public void close(){
         System.out.println("NetworkClient.close");
         disconnect();
