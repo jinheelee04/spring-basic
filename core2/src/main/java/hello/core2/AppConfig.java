@@ -1,7 +1,7 @@
 package hello.core2;
 
 import hello.core2.discount.DiscountPolicy;
-import hello.core2.discount.FixDiscountPolicy;
+import hello.core2.discount.RateDiscountPolicy;
 import hello.core2.member.MemberService;
 import hello.core2.member.MemberServiceImpl;
 import hello.core2.member.MemoryMemberRepository;
@@ -21,8 +21,9 @@ public class AppConfig {
     private static MemoryMemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
-    
+
     public DiscountPolicy discountPolicy(){
-        return new FixDiscountPolicy();
+//        return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
     }
 }
